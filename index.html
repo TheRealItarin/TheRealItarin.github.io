@@ -5,15 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professional Networking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="details.html">Web site creation</a></li>
         </ul>
-</head>
+    </nav>
 
-<body>
     <h1>The blog of Istvan Kleizer</h1>
     <section>
         <h1>Attended conferences and tech&Meets</h1>
@@ -40,7 +43,11 @@
             challenges faced during the project. It was a great experience and provided valuable
             networking opportunities.</p>
         <h2>Inauguration Cyber Defense Factory</h2>
-        <source src="/TheRealItarin.github.io/media/CyberDefHowest.mp4" type="video/mp4">
+        <video controls
+            style="max-width: 100%; max-height: 350px; border-radius: 8px; border: 2px solid #3a5a7d; margin: 1.5rem 0;">
+            <source src="/TheRealItarin.github.io/media/CyberDefHowest.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
         <p>This conference was a great opportunity to learn about the latest developments in cyber defense and network
             security. Also was a great opportunity to see a more serous side of the industry and cyber security as a
             whole. While we learned about the things which were said, now seeing it in practice with real life examples,
@@ -52,7 +59,11 @@
     <section>
         <h1>International programs and events I attended</h1>
         <h2>Exchange study program in the Netherlands</h2>
-        <source src="/TheRealItarin.github.io/media/Fontys.mp4" type="video/mp4">
+        <video controls
+            style="max-width: 100%; max-height: 350px; border-radius: 8px; border: 2px solid #3a5a7d; margin: 1.5rem 0;">
+            <source src="/TheRealItarin.github.io/media/Fontys.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
         <p>In my third year at Howest, I participated in the exchange study program in the Netherlands, which allowed me
             to experience a different educational system. A more practical approach was taken, focusing on real-world
             applications and hands-on learning with multiple projects.</p>
@@ -70,6 +81,18 @@
     </section>
     <section>
         <h1>Projects</h1>
+        <h2>Implementing security and performance monitoring for Pixel-Nexus company</h2>
+        <p>During my internship at Pixel-Nexus, and as part of my graduation project, I worked on implementing a
+            security and performance monitoring system. The first step in this project was to map the company's
+            infrastructure, to understand what I'm working with. I conducted a threat assessment to see and identify
+            potential risks. The found risks and the company's infrastructure in mind then I looked up multiple security
+            frameworks, compared them, and selected the most fitting one to use it as a base model. Lastly selected the
+            monitoring tool which would I use, again with proper research, and keeping in mind the needs of the company.
+            Only after these steps I started the implementation. The project was a great learning experience, and I
+            gained valuable insights on the difference between a test environment and production, and how to properly
+            implement security measures in a real life environment. The project will be available as my bachelor thesis
+            later.
+        </p>
         <h2>Contributing to the European data strategy project.</h2>
         <p>As part of my exchange program at Fontys, I have contributed to the European data strategy project, with a
             team of four. Our work included the Common European data spaces initiative, where we were tasked to find and
@@ -110,5 +133,45 @@
             networking.</p>
     </section>
 </body>
+
+<div class="image-modal" id="imageModal">
+    <div class="image-modal-content">
+        <button class="image-modal-close" onclick="closeImageModal()">&times;</button>
+        <img id="modalImage" src="" alt="">
+    </div>
+</div>
+
+<script>
+    function openImageModal(imgElement) {
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        modalImage.src = imgElement.src;
+        modalImage.alt = imgElement.alt;
+        modal.classList.add('active');
+    }
+
+    function closeImageModal() {
+        const modal = document.getElementById('imageModal');
+        modal.classList.remove('active');
+    }
+
+    document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('click', function () {
+            openImageModal(this);
+        });
+    });
+
+    document.getElementById('imageModal').addEventListener('click', function (e) {
+        if (e.target === this) {
+            closeImageModal();
+        }
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            closeImageModal();
+        }
+    });
+</script>
 
 </html>

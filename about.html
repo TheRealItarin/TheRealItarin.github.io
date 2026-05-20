@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Istvan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -12,9 +16,6 @@
             <li><a href="details.html">Web site creation</a></li>
         </ul>
     </nav>
-</head>
-
-<body>
     <section>
         <h1>who am I?</h1>
         <img src="/TheRealItarin.github.io/media/pfp/me.jpg" alt="pfp">
@@ -76,5 +77,45 @@
         </ul>
     </section>
 </body>
+
+<div class="image-modal" id="imageModal">
+    <div class="image-modal-content">
+        <button class="image-modal-close" onclick="closeImageModal()">&times;</button>
+        <img id="modalImage" src="" alt="">
+    </div>
+</div>
+
+<script>
+function openImageModal(imgElement) {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    modalImage.src = imgElement.src;
+    modalImage.alt = imgElement.alt;
+    modal.classList.add('active');
+}
+
+function closeImageModal() {
+    const modal = document.getElementById('imageModal');
+    modal.classList.remove('active');
+}
+
+document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('click', function() {
+        openImageModal(this);
+    });
+});
+
+document.getElementById('imageModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeImageModal();
+    }
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeImageModal();
+    }
+});
+</script>
 
 </html>

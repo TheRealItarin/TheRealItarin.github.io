@@ -5,9 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For the website</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="details.html">Web site creation</a></li>
+        </ul>
+    </nav>
     <section>
         <h1>How the website was created?</h1>
         <p> The website is using the built in webserver provided by github. I choose this solution, because I already
@@ -15,5 +23,45 @@
             choose this is because it's completely free. For exact details about the website's creation, please refer to official documentation: https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site</p>
     </section>
 </body>
+
+<div class="image-modal" id="imageModal">
+    <div class="image-modal-content">
+        <button class="image-modal-close" onclick="closeImageModal()">&times;</button>
+        <img id="modalImage" src="" alt="">
+    </div>
+</div>
+
+<script>
+function openImageModal(imgElement) {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    modalImage.src = imgElement.src;
+    modalImage.alt = imgElement.alt;
+    modal.classList.add('active');
+}
+
+function closeImageModal() {
+    const modal = document.getElementById('imageModal');
+    modal.classList.remove('active');
+}
+
+document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('click', function() {
+        openImageModal(this);
+    });
+});
+
+document.getElementById('imageModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeImageModal();
+    }
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeImageModal();
+    }
+});
+</script>
 
 </html>
